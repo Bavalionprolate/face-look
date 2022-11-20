@@ -1,0 +1,188 @@
+#MainWindow{
+    background-color: #fff;
+    min-width: 650px;
+}
+
+#btn_menu{
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+#full_sidebar_widget{
+    background-color: #2e2e2e;
+    max-width: 120px;
+    min-width: 120px;
+}
+
+#full_sidebar_widget QPushButton{
+    border: none;
+    text-align: left;
+    padding: 8px 0 8px 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    color: #fff;
+    
+}
+
+#full_sidebar_widget QLabel{
+    padding: 8px;
+    color: #fff;
+}
+
+
+#full_sidebar_widget QPushButton:hover{
+    background-color: rgba(141, 141, 141, 0.438);
+    border-radius: 3px;
+}
+
+#full_sidebar_widget QPushButton:checked{
+    background-color: rgba(141, 141, 141, 0.438);
+}
+
+#middle_sidebar_widget{
+    background-color: #2e2e2e;
+    max-width: 60px;
+    min-width: 60px;
+}
+
+#middle_sidebar_widget QPushButton{
+    height: 46px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 5px;
+}
+
+#middle_sidebar_widget QLabel{
+    padding: 8px;
+    color: #fff;
+}
+
+#middle_sidebar_widget QPushButton:hover{
+    background-color: rgba(141, 141, 141, 0.438);
+    border-radius: 3px;
+}
+
+#middle_sidebar_widget QPushButton:checked{
+    background-color: rgba(141, 141, 141, 0.438);
+}
+
+#btn_user {
+    border: none;
+}
+
+#scrollArea{
+    border: none;
+}
+
+#scrollAreaWidgetContents_2{
+    background-color: rgb(245, 245, 245);
+}
+
+#scrollAreaWidgetContents_2 #frame{
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 30px 50px 30px 50px;
+    
+}
+
+#scrollAreaWidgetContents_2 #frame #widget_2 QLabel{
+    font-size: 14px;
+}
+
+#scrollAreaWidgetContents_2 #frame #widget_2 #label_6{
+    max-height: 1em;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+#scrollAreaWidgetContents_2 #frame #widget_2 #verticalLayout_13{
+    background-color: rgb(233, 233, 233);
+    border-radius: 15px;
+    min-height: 150px;
+    height: 190px;
+}
+
+#centralwidget_title QPushButton{
+    border: none;
+    padding: 6px;
+}
+
+#centralwidget_title #close_app:hover{
+    background-color: red;
+}
+
+#centralwidget_title #max_app:hover, #hidde_app:hover{
+    background-color: silver;
+}
+
+#main_page #widget_4 {
+    background-color:  rgb(233, 233, 233);
+    border-radius: 15px;
+}
+
+#right, #left{
+    background-color: #fff;
+    border-radius: 15px;
+}
+#scrollArea_2{
+    border: none;
+    background-color: #fff;
+}
+
+
+QScrollBar:vertical
+{
+    background-color: #ffffff;
+    width: 15px;
+    margin: 15px 3px 15px 3px;
+    border: 1px transparent #2A2929;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical
+{
+    background-color: silver;
+    min-height: 5px;
+    border-radius: 4px;
+}
+
+QScrollBar::sub-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border: none;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border: none;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+#frame_2{
+    background-color: #fff;
+}
+
+#widget_2 QPushButton {
+	border-radius: 3px;
+	margin: 10px;
+    width: 100px;
+	padding: 10px;
+	background-color: #2A2929;
+	color: white;
+}
+#widget_2 QLineEdit {
+    border-radius: 3px;
+    border: 0;
+    background-color: white;
+    color: #2A2929;
+    padding: 6px;
+}

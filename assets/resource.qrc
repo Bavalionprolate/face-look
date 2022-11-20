@@ -1,0 +1,35 @@
+<RCC>
+  <qresource prefix="svg">
+    <file>svg/account.svg</file>
+    <file>svg/account_check.svg</file>
+    <file>svg/account_plus.svg</file>
+    <file>svg/archive_alt.svg</file>
+    <file>svg/archive_cancel.svg</file>
+    <file>svg/archive_check.svg</file>
+    <file>svg/archive_cog.svg</file>
+    <file>svg/archive_edit.svg</file>
+    <file>svg/archive_eye.svg</file>
+    <file>svg/archive_lock.svg</file>
+    <file>svg/archive_lock_open.svg</file>
+    <file>svg/archive_plus.svg</file>
+    <file>svg/archive_refresh.svg</file>
+    <file>svg/close_box.svg</file>
+    <file>svg/database.svg</file>
+    <file>svg/database_check.svg</file>
+    <file>svg/database_cog.svg</file>
+    <file>svg/database_minus.svg</file>
+    <file>svg/database_plus.svg</file>
+    <file>svg/exit_to_app.svg</file>
+    <file>svg/home.svg</file>
+    <file>svg/lightbulb_outline.svg</file>
+    <file>svg/lock.svg</file>
+    <file>svg/lock_outline.svg</file>
+    <file>svg/menu.svg</file>
+    <file>svg/microsoft_xbox_controller_menu.svg</file>
+    <file>svg/settings.svg</file>
+    <file>svg/title/close.svg</file>
+    <file>svg/title/window_maximize.svg</file>
+    <file>svg/title/window_minimize.svg</file>
+    <file>svg/title/window_restore.svg</file>
+  </qresource>
+</RCC>
