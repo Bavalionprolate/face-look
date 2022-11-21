@@ -485,7 +485,7 @@
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>98</width>
+                            <width>16</width>
                             <height>1000</height>
                            </rect>
                           </property>
@@ -956,7 +956,7 @@
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QPushButton" name="pushButton">
+                                  <widget class="QPushButton" name="connect">
                                    <property name="text">
                                     <string>Подключиться</string>
                                    </property>
@@ -1254,7 +1254,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>177</x>
-     <y>70</y>
+     <y>23</y>
     </hint>
     <hint type="destinationlabel">
      <x>100</x>
@@ -1269,12 +1269,12 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>125</y>
+     <x>142</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>36</x>
-     <y>125</y>
+     <x>42</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -1286,11 +1286,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>142</x>
-     <y>153</y>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
-     <x>35</x>
-     <y>153</y>
+     <x>42</x>
+     <y>106</y>
     </hint>
    </hints>
   </connection>
@@ -1301,12 +1301,12 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>125</y>
+     <x>41</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>142</x>
-     <y>125</y>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -1318,7 +1318,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>177</x>
-     <y>70</y>
+     <y>23</y>
     </hint>
     <hint type="destinationlabel">
      <x>29</x>
@@ -1333,12 +1333,12 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>22</x>
-     <y>97</y>
+     <x>29</x>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>97</y>
+     <x>142</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>
@@ -1350,11 +1350,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>142</x>
-     <y>97</y>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
-     <x>29</x>
-     <y>97</y>
+     <x>36</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>
@@ -1365,12 +1365,12 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>30</x>
-     <y>153</y>
+     <x>37</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>142</x>
-     <y>153</y>
+     <y>106</y>
     </hint>
    </hints>
   </connection>
@@ -1435,6 +1435,22 @@
     <hint type="destinationlabel">
      <x>143</x>
      <y>744</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>connect</sender>
+   <signal>clicked()</signal>
+   <receiver>connect</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>

@@ -1,5 +1,4 @@
-import sys
-import pymysql as mdb
+import sys, pymysql
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QMessageBox
 
@@ -54,6 +53,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_btn_settings_2_toggled(self):
         self.appUI.stackedWidget.setCurrentIndex(3)
+
+    def on_btn_connect_
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

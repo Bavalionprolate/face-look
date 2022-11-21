@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: db
--- Время создания: Ноя 18 2022 г., 06:53
+-- Время создания: Ноя 21 2022 г., 05:49
 -- Версия сервера: 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
 -- Версия PHP: 8.0.19
 
@@ -59,6 +59,13 @@ CREATE TABLE `User` (
   `birthday` date DEFAULT NULL,
   `address` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `User`
+--
+
+INSERT INTO `User` (`id`, `login`, `password`, `fio`, `pol`, `birthday`, `address`) VALUES
+(1, 'bavalion', '34781', 'Громыко Иван Александрович', 'Мужской', '2003-03-27', 'г.Иркутск, р.п. Маркова');
 
 --
 -- Индексы сохранённых таблиц
