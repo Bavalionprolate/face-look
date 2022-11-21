@@ -11,11 +11,11 @@ class Form(QWidget):
 
         
 
-    def mysqlconnect():
-    # To connect MySQL database
-    conn = pymysql.connect(host, user, password, db)
+    # def mysqlconnect():
+    # # To connect MySQL database
+    # conn = pymysql.connect(host, user, password, db)
       
-    cur = conn.cursor()
+    # cur = conn.cursor()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # app.setStyleSheet(style_str)
 
-    mysqlconnect()
+    # mysqlconnect()
 
     window = Form()
     window.show()

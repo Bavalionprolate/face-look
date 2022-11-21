@@ -533,4 +533,4 @@ class Ui_MainWindow(object):
         self.action_3.setText(_translate("MainWindow", "Устройсва"))
         self.action_5.setText(_translate("MainWindow", "Базу данных"))
         self.action_6.setText(_translate("MainWindow", "Устройсва"))
-import resource_rc
+import assets.resource_rc
