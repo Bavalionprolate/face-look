@@ -1,4 +1,4 @@
-host='web.edu'
-user='19261'
-password = "vqgyhz"
+host='localhost'
+user='root'
+password = ""
 db='19261_face_look'

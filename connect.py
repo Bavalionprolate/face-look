@@ -19,7 +19,7 @@ class Form(QWidget):
 
 	def mysqlconnect(self):
 
-		with open('IMG_20221126_104327.jpg', 'rb') as f:
+		with open('photo_2022-11-27_19-35-45.jpg', 'rb') as f:
 		    photo = f.read()
 		encodestring = base64.b64encode(photo)
 		
@@ -32,8 +32,8 @@ class Form(QWidget):
 			)
 		
 		cur = con.cursor()
-		sql = f"INSERT INTO Photo_user (User_id, photo) values (1, %s)"
-		cur.execute(sql, encodestring)
+		sql = f"INSERT INTO User (User_id, photo) values (1, %s)"
+		cur.execute(sql, (encodestring, ))
 		con.commit()
 		
 		# To close the connection

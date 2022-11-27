@@ -116,8 +116,9 @@
     background-color: silver;
 }
 
-#main_page #widget_4 {
+#main_page #widget_4, #base_page #widget_7, #add_personal_page #widget_8  {
     background-color:  rgb(233, 233, 233);
+    padding: 8px;
     border-radius: 15px;
 }
 
@@ -125,6 +126,53 @@
     background-color: #fff;
     border-radius: 15px;
 }
+
+#base_page #widget_7 QTableWidget{
+    background-color:  #ffffff;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+}
+
+#base_page #widget_7 QTableWidget::item{
+    padding: 10px;
+}
+
+#base_page #widget_7 QPushButton{
+    border-radius: 3px;
+	margin: 3px;
+	padding: 10px;
+	background-color: #2A2929;
+	color: white;
+}
+
+#add_personal_page #widget_8 QTableWidget{
+    background-color:  #ffffff;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+}
+
+#add_personal_page #widget_8 QTableWidget::item{
+    padding: 10px;
+}
+
+#add_personal_page #widget_8 QLineEdit{
+    border-radius: 3px;
+	margin: 3px;
+	padding: 10px;
+	background-color: #ffffff;
+	color: #2A2929;
+}
+
+#add_personal_page #widget_8 QPushButton{
+    border-radius: 3px;
+	margin: 3px;
+	padding: 10px;
+	background-color: #2A2929;
+	color: white;
+}
+
 #scrollArea_2{
     border: none;
     background-color: #fff;
@@ -158,6 +206,55 @@ QScrollBar::sub-line:vertical
 }
 
 QScrollBar::add-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border: none;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+
+
+
+
+QTableWidget QScrollBar:horizontal
+{
+    background-color: #ffffff;
+    margin: 3px 15px 3px 15px;
+    border: 1px transparent #2A2929;
+    height: 15px;
+    border-radius: 4px;
+}
+
+QTableWidget QScrollBar:vertical
+{
+    background-color: #ffffff;
+    width: 15px;
+    margin: 15px 3px 15px 3px;
+    border: 1px transparent #2A2929;
+    border-radius: 4px;
+}
+
+QTableWidget QScrollBar::handle:horizontal, QTableWidget QScrollBar::handle:vertical
+{
+    background-color: silver;
+    min-height: 5px;
+    border-radius: 4px;
+}
+
+QTableWidget QScrollBar::sub-line:horizontal, QTableWidget QScrollBar::sub-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border: none;
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QTableWidget QScrollBar::add-line:horizontal, QTableWidget QScrollBar::add-line:vertical
 {
     margin: 3px 0px 3px 0px;
     border: none;
