@@ -339,7 +339,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="main_page">
              <layout class="QGridLayout" name="gridLayout_2">
@@ -848,7 +848,7 @@
                      <item>
                       <widget class="QPushButton" name="btn_get_date">
                        <property name="text">
-                        <string>Прогрузить Базу</string>
+                        <string>Прогрузить таблицу</string>
                        </property>
                       </widget>
                      </item>
@@ -881,9 +881,6 @@
               <item row="0" column="0">
                <widget class="QWidget" name="widget_8" native="true">
                 <layout class="QGridLayout" name="gridLayout_11">
-                 <item row="1" column="0">
-                  <widget class="QTableWidget" name="tableWidget_2"/>
-                 </item>
                  <item row="0" column="0">
                   <layout class="QVBoxLayout" name="verticalLayout_32">
                    <item>
@@ -1020,6 +1017,9 @@
                     </layout>
                    </item>
                   </layout>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QTableWidget" name="tableWidget_2"/>
                  </item>
                 </layout>
                </widget>
@@ -1735,12 +1735,12 @@
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>141</y>
+     <x>250</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
-     <x>357</x>
-     <y>144</y>
+     <x>250</x>
+     <y>54</y>
     </hint>
    </hints>
   </connection>

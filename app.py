@@ -108,6 +108,19 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		self.btn_get_date.clicked.connect(self.on_btn_get_date)
 		self.btn_add_user_in_bd.clicked.connect(self.on_btn_add_user_in_bd)
+
+	def getsamerowcell(self, columnname):
+
+		row = self.result_table.currentItem().row()
+		# col = widget.currentItem().column()
+
+		# loop through headers and find column number for given column name
+		headercount = self.result_table.columnCount()
+		for x in range(headercount):
+			headertext = self.result_table.horizontalHeaderItem(x).text()
+			if columnname == headertext:
+				cell = self.result_table.item(row, x).text()  # get cell at row, col
+				return cell
 		
 		
 	def eventFilter(self, source, event):
@@ -116,13 +129,12 @@ class MainWindow(QtWidgets.QMainWindow):
 			if event.type() == QEvent.MouseButtonRelease:
 				if event.button() == Qt.LeftButton:
 					
-					row = self.result_table.currentRow()
 					col = self.result_table.currentColumn()
 
 					if (col == 7):
 						try:
 							db = ConnectToMySQL()
-							image = db.RetriveBlob(row + 1)
+							image = db.RetriveBlob(self.getsamerowcell('Идентификатор'))
 							for i in image:
 													
 								with open("assets/tmp/imageToSave.jpg", "wb") as fh:

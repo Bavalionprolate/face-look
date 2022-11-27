@@ -3,54 +3,54 @@ from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit, QApplicatio
 import base64
 import io
 import PIL.Image
-from assets.ui.connector_ui import Ui_Form
+# from assets.ui.connector_ui import Ui_Form
 from config import host, user, password, db
 
-from app import MainWindow
+# from app import MainWindow
 
-class Form(QWidget):
-	def __init__(self):
-		super(Form, self).__init__()
+# class Form(QWidget):
+# 	def __init__(self):
+# 		super(Form, self).__init__()
 
-		self.appUI = Ui_Form()
-		self.appUI.setupUi(self)
+# 		# self.appUI = Ui_Form()
+# 		# self.appUI.setupUi(self)
 
-		self.mysqlconnect()
+# 		self.mysqlconnect()
 
-	def mysqlconnect(self):
+def mysqlconnect():
 
-		with open('photo_2022-11-27_19-35-45.jpg', 'rb') as f:
-		    photo = f.read()
-		encodestring = base64.b64encode(photo)
+	with open('Аннотация 2022-11-27 225441.jpg', 'rb') as f:
+		photo = f.read()
+	encodestring = base64.b64encode(photo)
 		
-		# To connect MySQL database
-		con = mysql.connector.MySQLConnection(
-			host = host,
-			user = user, 
-			password = password,
-			db = db,
-			)
+	# To connect MySQL database
+	con = mysql.connector.MySQLConnection(
+		host = host,
+		user = user, 
+		password = password,
+		db = db,
+		)
 		
-		cur = con.cursor()
-		sql = f"INSERT INTO User (User_id, photo) values (1, %s)"
-		cur.execute(sql, (encodestring, ))
-		con.commit()
+	cur = con.cursor()
+	sql = f"INSERT INTO photo_user (User_id, photo) values (2, %s)"
+	cur.execute(sql, (encodestring, ))
+	con.commit()
 		
 		# To close the connection
-		con.close()
+	con.close()
 
-if __name__ == '__main__':
-	app = QApplication(sys.argv)
+# if __name__ == '__main__':
+# 	app = QApplication(sys.argv)
 
-	# with open("assets/style/app_style.qss", "r") as style_file:
-	#     style_str = style_file.read()
+# 	# with open("assets/style/app_style.qss", "r") as style_file:
+# 	#     style_str = style_file.read()
 
-	# app.setStyleSheet(style_str)
+# 	# app.setStyleSheet(style_str)
 
 
-	window = Form()
-	window.show()
-	sys.exit(app.exec())
+# 	window = Form()
+# 	window.show()
+# 	sys.exit(app.exec())
   
 
 # import pymysql
@@ -72,5 +72,5 @@ if __name__ == '__main__':
 #     conn.close()
   
 # # Driver Code
-# if __name__ == "__main__" :
-#     mysqlconnect()
+if __name__ == "__main__" :
+    mysqlconnect()
