@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: db
--- Время создания: Ноя 21 2022 г., 05:49
+-- Время создания: Ноя 26 2022 г., 03:29
 -- Версия сервера: 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
 -- Версия PHP: 8.0.19
 
@@ -31,6 +31,19 @@ CREATE TABLE `Photo_user` (
   `User_id` int(11) NOT NULL,
   `photo` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `Photo_user`
+--
+
+INSERT INTO `Photo_user` (`User_id`, `photo`) VALUES
+(1, 0x6466),
+(1, NULL),
+(1, NULL),
+(1, NULL),
+(1, NULL),
+(1, NULL),
+(1, 0x473a666163652d6c6f6f6b494d475f32303232313132365f3130343332372e6a7067);
 
 -- --------------------------------------------------------
 
