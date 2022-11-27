@@ -74,6 +74,7 @@ class ConnectToMySQL():
 			msgBox.setStandardButtons(QMessageBox.Ok)
 			msgBox.exec()
 
+
 		finally:
 			msgBox = QMessageBox()
 			msgBox.setIcon(QMessageBox.Information)
