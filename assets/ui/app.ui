@@ -848,7 +848,7 @@
                      <item>
                       <widget class="QPushButton" name="btn_get_date">
                        <property name="text">
-                        <string>Прогрузить Базу</string>
+                        <string>Прогрузить таблицу</string>
                        </property>
                       </widget>
                      </item>
@@ -907,7 +907,7 @@
                       <property name="opaqueResize">
                        <bool>true</bool>
                       </property>
-                      <widget class="QWidget" name="">
+                      <widget class="QWidget" name="layoutWidget">
                        <layout class="QVBoxLayout" name="verticalLayout_32">
                         <item>
                          <layout class="QVBoxLayout" name="verticalLayout_31">
@@ -1045,6 +1045,52 @@
                        </layout>
                       </widget>
                       <widget class="QTableWidget" name="tableWidget_2"/>
+                      <widget class="QWidget" name="widget_10" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_10">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <spacer name="horizontalSpacer_10">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>689</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton_6">
+                          <property name="text">
+                           <string>Удалить линию с пользователся</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton">
+                          <property name="text">
+                           <string>Прогрузить таблицу</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
                      </widget>
                     </item>
                    </layout>
