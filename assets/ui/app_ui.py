@@ -204,7 +204,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 98, 1000))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 16, 1000))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -388,9 +388,9 @@ class Ui_MainWindow(object):
         self.pushButton_2.setMaximumSize(QtCore.QSize(200, 16777215))
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_4.addWidget(self.pushButton_2)
-        self.pushButton = QtWidgets.QPushButton(self.horizontalLayout_5)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_4.addWidget(self.pushButton)
+        self.connect = QtWidgets.QPushButton(self.horizontalLayout_5)
+        self.connect.setObjectName("connect")
+        self.horizontalLayout_4.addWidget(self.connect)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem5)
         self.verticalLayout_7.addWidget(self.horizontalLayout_5)
@@ -491,6 +491,7 @@ class Ui_MainWindow(object):
         self.pushButton_4.toggled['bool'].connect(self.pushButton_8.setChecked) # type: ignore
         self.btn_settings_2.toggled['bool'].connect(self.btn_settings_1.setChecked) # type: ignore
         self.btn_settings_1.toggled['bool'].connect(self.btn_settings_2.setChecked) # type: ignore
+        self.connect.clicked.connect(self.connect.click) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -521,7 +522,7 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "База данных"))
         self.label_9.setText(_translate("MainWindow", "Введите ваши данные ниже для подключения"))
         self.pushButton_2.setText(_translate("MainWindow", "Удалить подключение"))
-        self.pushButton.setText(_translate("MainWindow", "Подключиться"))
+        self.connect.setText(_translate("MainWindow", "Подключиться"))
         self.label_3.setText(_translate("MainWindow", "Меню"))
         self.btn_home_2.setText(_translate("MainWindow", "Главная"))
         self.btn_db_2.setText(_translate("MainWindow", "База данных"))
