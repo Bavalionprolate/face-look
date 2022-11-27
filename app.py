@@ -9,7 +9,7 @@ from config import host, user, password, db
 import base64
 from PIL import Image #pip install Pillow
 
-from assets.ui.app_ui import Ui_MainWindow
+from assets.ui.ui_app import Ui_MainWindow
 
 class ConnectToMySQL():
 	def __init__(self):
@@ -55,6 +55,34 @@ class ConnectToMySQL():
 		finally:
 			if self.con:
 				self.con.close()
+
+	def UploadData(self, lineEdit_id, lineEdit_login, lineEdit_password, lineEdit_fio, lineEdit_pol, lineEdit_data, lineEdit_addres):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+			sql = f"INSERT INTO User (`id`, `login`, `password`, `fio`, `pol`, `birthday`, `address`) VALUES ('{lineEdit_id}', '{lineEdit_login}', '{lineEdit_password}', '{lineEdit_fio}', '{lineEdit_pol}', '{lineEdit_data}', '{lineEdit_addres}')"
+			cursor.execute(sql)
+			result = cursor.fetchone()
+			self.con.commit()
+
+			return result
+		except Exception as ex:
+			msgBox = QMessageBox()
+			msgBox.setIcon(QMessageBox.Information)
+			msgBox.setText(f"{ex}")
+			msgBox.setWindowTitle("Ошибка")
+			msgBox.setStandardButtons(QMessageBox.Ok)
+			msgBox.exec()
+
+		finally:
+			msgBox = QMessageBox()
+			msgBox.setIcon(QMessageBox.Information)
+			msgBox.setText("Новый пользователь добавлен")
+			msgBox.setWindowTitle("Уведомление")
+			msgBox.setStandardButtons(QMessageBox.Ok)
+			msgBox.exec()
+			if self.con:
+				self.con.close()
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__() 
@@ -68,15 +96,18 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.appUI.middle_sidebar_widget.hide()
 
 		self.btn_get_date = self.appUI.btn_get_date
+		self.btn_add_user_in_bd = self.appUI.btn_add_user_in_bd
+		
 		self.result_table = self.appUI.tableWidget
 
 		self.result_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 		self.result_table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 		self.result_table.horizontalHeader().setMinimumSectionSize(0)
+		self.result_table.viewport().installEventFilter(self)
 
 		self.btn_get_date.clicked.connect(self.on_btn_get_date)
+		self.btn_add_user_in_bd.clicked.connect(self.on_btn_add_user_in_bd)
 		
-		self.result_table.viewport().installEventFilter(self)
 		
 	def eventFilter(self, source, event):
 		if self.result_table.selectedIndexes() != []:
@@ -89,8 +120,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 					if (col == 7):
 						try:
-							RetriveImage = ConnectToMySQL()
-							image = RetriveImage.RetriveBlob(row + 1)
+							db = ConnectToMySQL()
+							image = db.RetriveBlob(row + 1)
 							for i in image:
 													
 								with open("assets/tmp/imageToSave.jpg", "wb") as fh:
@@ -107,6 +138,20 @@ class MainWindow(QtWidgets.QMainWindow):
 							msgBox.exec()
  
 		return QObject.event(source, event)
+
+	@pyqtSlot(bool)
+	def on_btn_add_user_in_bd(self):
+		lineEdit_login = self.appUI.lineEdit_login.text()
+		lineEdit_id = self.appUI.lineEdit_id.text()
+		lineEdit_password = self.appUI.lineEdit_password.text()
+		lineEdit_fio = self.appUI.lineEdit_fio.text()
+		lineEdit_pol = self.appUI.lineEdit_pol.text()
+		lineEdit_data = self.appUI.lineEdit_data.text()
+		lineEdit_addres = self.appUI.lineEdit_addres.text()
+		db = ConnectToMySQL()
+		db.UploadData(lineEdit_id, lineEdit_login, lineEdit_password, lineEdit_fio, lineEdit_pol, lineEdit_data, lineEdit_addres)
+		
+
 
 	@pyqtSlot(bool)
 	def on_btn_get_date(self):

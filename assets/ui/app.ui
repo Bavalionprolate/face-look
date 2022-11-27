@@ -485,7 +485,7 @@
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>458</width>
+                            <width>98</width>
                             <height>1000</height>
                            </rect>
                           </property>
@@ -898,7 +898,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_2"/>
+                        <widget class="QLineEdit" name="lineEdit_id"/>
                        </item>
                       </layout>
                      </item>
@@ -912,7 +912,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_3"/>
+                        <widget class="QLineEdit" name="lineEdit_login"/>
                        </item>
                       </layout>
                      </item>
@@ -926,7 +926,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_4"/>
+                        <widget class="QLineEdit" name="lineEdit_password"/>
                        </item>
                       </layout>
                      </item>
@@ -940,7 +940,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_7"/>
+                        <widget class="QLineEdit" name="lineEdit_fio"/>
                        </item>
                       </layout>
                      </item>
@@ -954,35 +954,35 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_5"/>
+                        <widget class="QLineEdit" name="lineEdit_pol"/>
                        </item>
                       </layout>
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_30">
                        <item>
-                        <widget class="QLabel" name="label_27">
+                        <widget class="QLabel" name="label_25">
                          <property name="text">
                           <string>Дата рождения</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_8"/>
+                        <widget class="QLineEdit" name="lineEdit_data"/>
                        </item>
                       </layout>
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_28">
                        <item>
-                        <widget class="QLabel" name="label_25">
+                        <widget class="QLabel" name="label_27">
                          <property name="text">
                           <string>Адресс проживания</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_6"/>
+                        <widget class="QLineEdit" name="lineEdit_addres"/>
                        </item>
                       </layout>
                      </item>
@@ -1004,14 +1004,14 @@
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_6">
+                      <widget class="QPushButton" name="btn_upload_user_photo">
                        <property name="text">
                         <string>Загрузить фото</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton">
+                      <widget class="QPushButton" name="btn_add_user_in_bd">
                        <property name="text">
                         <string>Добавить</string>
                        </property>
@@ -1053,7 +1053,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1016</width>
+                   <width>310</width>
                    <height>1000</height>
                   </rect>
                  </property>
