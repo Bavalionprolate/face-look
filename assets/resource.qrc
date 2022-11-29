@@ -13,6 +13,8 @@
     <file>svg/archive_lock_open.svg</file>
     <file>svg/archive_plus.svg</file>
     <file>svg/archive_refresh.svg</file>
+    <file>svg/arrow_drop_down.svg</file>
+    <file>svg/arrow_drop_up.svg</file>
     <file>svg/close_box.svg</file>
     <file>svg/database.svg</file>
     <file>svg/database_check.svg</file>
@@ -26,10 +28,7 @@
     <file>svg/lock_outline.svg</file>
     <file>svg/menu.svg</file>
     <file>svg/microsoft_xbox_controller_menu.svg</file>
+    <file>svg/search.svg</file>
     <file>svg/settings.svg</file>
-    <file>svg/title/close.svg</file>
-    <file>svg/title/window_maximize.svg</file>
-    <file>svg/title/window_minimize.svg</file>
-    <file>svg/title/window_restore.svg</file>
   </qresource>
 </RCC>

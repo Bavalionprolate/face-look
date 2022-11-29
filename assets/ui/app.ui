@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1185</width>
-    <height>779</height>
+    <width>1274</width>
+    <height>852</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -485,7 +485,7 @@
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>16</width>
+                            <width>503</width>
                             <height>1000</height>
                            </rect>
                           </property>
@@ -772,6 +772,73 @@
                     <number>9</number>
                    </property>
                    <item>
+                    <widget class="QWidget" name="widget_11" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_11">
+                      <property name="spacing">
+                       <number>6</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <spacer name="horizontalSpacer_11">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>344</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="lineEdit_2"/>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btn_search_1">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../resource.qrc">
+                          <normaloff>:/svg/svg/search.svg</normaloff>:/svg/svg/search.svg</iconset>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_12">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>344</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QTableWidget" name="tableWidget">
                      <property name="sizeAdjustPolicy">
                       <enum>QAbstractScrollArea::AdjustToContents</enum>
@@ -787,11 +854,6 @@
                      <column>
                       <property name="text">
                        <string>Логин</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Пароль</string>
                       </property>
                      </column>
                      <column>
@@ -833,6 +895,13 @@
                       <number>0</number>
                      </property>
                      <item>
+                      <widget class="QPushButton" name="btn_clear_table_1">
+                       <property name="text">
+                        <string>Очистить таблицу</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <spacer name="horizontalSpacer_8">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
@@ -846,7 +915,7 @@
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="btn_get_date">
+                      <widget class="QPushButton" name="btn_get_date_1">
                        <property name="text">
                         <string>Прогрузить таблицу</string>
                        </property>
@@ -886,27 +955,59 @@
                    <layout class="QGridLayout" name="gridLayout_12">
                     <item row="0" column="0">
                      <widget class="QSplitter" name="splitter">
-                      <property name="toolTipDuration">
-                       <number>-1</number>
-                      </property>
-                      <property name="autoFillBackground">
-                       <bool>false</bool>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Plain</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>1</number>
-                      </property>
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
                       </property>
-                      <property name="opaqueResize">
-                       <bool>true</bool>
-                      </property>
+                      <widget class="QWidget" name="widget_12" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_12">
+                        <item>
+                         <spacer name="horizontalSpacer_13">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>332</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="lineEdit_3"/>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_search_2">
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="../resource.qrc">
+                            <normaloff>:/svg/svg/search.svg</normaloff>:/svg/svg/search.svg</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>20</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_14">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>332</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
                       <widget class="QWidget" name="layoutWidget">
                        <layout class="QVBoxLayout" name="verticalLayout_32">
                         <item>
@@ -1027,6 +1128,13 @@
                            </spacer>
                           </item>
                           <item>
+                           <widget class="QLabel" name="label_status">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
                            <widget class="QPushButton" name="btn_upload_user_photo">
                             <property name="text">
                              <string>Загрузить фото</string>
@@ -1044,7 +1152,43 @@
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QTableWidget" name="tableWidget_2"/>
+                      <widget class="QTableWidget" name="tableWidget_2">
+                       <column>
+                        <property name="text">
+                         <string>Идентификатор</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Логин</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Пароль</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>ФИО</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Пол</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Дата рождения</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Адресс</string>
+                        </property>
+                       </column>
+                      </widget>
                       <widget class="QWidget" name="widget_10" native="true">
                        <layout class="QHBoxLayout" name="horizontalLayout_10">
                         <property name="spacing">
@@ -1063,6 +1207,13 @@
                          <number>0</number>
                         </property>
                         <item>
+                         <widget class="QPushButton" name="btn_clear_table_2">
+                          <property name="text">
+                           <string>Очистить таблицу</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <spacer name="horizontalSpacer_10">
                           <property name="orientation">
                            <enum>Qt::Horizontal</enum>
@@ -1076,14 +1227,14 @@
                          </spacer>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_6">
+                         <widget class="QPushButton" name="btn_add_upload">
                           <property name="text">
-                           <string>Удалить линию с пользователся</string>
+                           <string>Приминить изменения</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton">
+                         <widget class="QPushButton" name="btn_get_date_2">
                           <property name="text">
                            <string>Прогрузить таблицу</string>
                           </property>
