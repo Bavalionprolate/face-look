@@ -120,6 +120,8 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.result_table_1.horizontalHeader().setMinimumSectionSize(0)
 		self.result_table_1.viewport().installEventFilter(self)
 
+		self.result_table_2.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+
 		self.btn_get_date_1.clicked.connect(self.on_btn_get_date_1)
 		self.btn_get_date_2.clicked.connect(self.on_btn_get_date_2)
 		self.btn_add_user_in_bd.clicked.connect(self.on_btn_add_user_in_bd)

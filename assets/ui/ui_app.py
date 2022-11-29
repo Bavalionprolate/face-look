@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\VanoG\OneDrive\Рабочий стол\2\assets\ui\app.ui'
+# Form implementation generated from reading ui file 'c:\code\face-look\assets\ui\app.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -204,7 +204,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 503, 1000))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 16, 1000))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -395,6 +395,12 @@ class Ui_MainWindow(object):
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName("splitter")
         self.widget_12 = QtWidgets.QWidget(self.splitter)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_12.sizePolicy().hasHeightForWidth())
+        self.widget_12.setSizePolicy(sizePolicy)
+        self.widget_12.setMinimumSize(QtCore.QSize(0, 0))
         self.widget_12.setObjectName("widget_12")
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.widget_12)
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
@@ -407,7 +413,7 @@ class Ui_MainWindow(object):
         self.btn_search_2 = QtWidgets.QPushButton(self.widget_12)
         self.btn_search_2.setText("")
         self.btn_search_2.setIcon(icon7)
-        self.btn_search_2.setIconSize(QtCore.QSize(20, 20))
+        self.btn_search_2.setIconSize(QtCore.QSize(16, 16))
         self.btn_search_2.setObjectName("btn_search_2")
         self.horizontalLayout_12.addWidget(self.btn_search_2)
         spacerItem9 = QtWidgets.QSpacerItem(332, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
