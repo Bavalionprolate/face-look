@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\code\face-look\assets\ui\app.ui'
+# Form implementation generated from reading ui file 'c:\Users\VanoG\OneDrive\Рабочий стол\2\assets\ui\app.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -725,4 +725,4 @@ class Ui_MainWindow(object):
         self.action_3.setText(_translate("MainWindow", "Устройсва"))
         self.action_5.setText(_translate("MainWindow", "Базу данных"))
         self.action_6.setText(_translate("MainWindow", "Устройсва"))
-import assets.resource_rc
+import resource_rc
