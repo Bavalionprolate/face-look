@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1185</width>
-    <height>779</height>
+    <width>1274</width>
+    <height>852</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -339,7 +339,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="main_page">
              <layout class="QGridLayout" name="gridLayout_2">
@@ -370,8 +370,38 @@
                     <item>
                      <widget class="QWidget" name="widget_6" native="true">
                       <layout class="QVBoxLayout" name="verticalLayout_14">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
                        <item>
                         <widget class="QComboBox" name="comboBox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
                          <item>
                           <property name="text">
                            <string>Из фото</string>
@@ -393,26 +423,44 @@
                           <layout class="QVBoxLayout" name="verticalLayout_15">
                            <item>
                             <widget class="QLabel" name="label_2">
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid silver;</string>
+                             </property>
                              <property name="text">
                               <string>TextLabel</string>
                              </property>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QWidget" name="widget" native="true">
+                            <widget class="QWidget" name="widget_11" native="true">
                              <property name="minimumSize">
                               <size>
                                <width>0</width>
-                               <height>50</height>
+                               <height>0</height>
                               </size>
                              </property>
                              <property name="maximumSize">
                               <size>
                                <width>16777215</width>
-                               <height>50</height>
+                               <height>40</height>
                               </size>
                              </property>
                              <layout class="QHBoxLayout" name="horizontalLayout_9">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
                               <item>
                                <widget class="QPushButton" name="pushButton_5">
                                 <property name="text">
@@ -485,7 +533,7 @@
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>16</width>
+                            <width>503</width>
                             <height>1000</height>
                            </rect>
                           </property>
@@ -522,186 +570,267 @@
                              <property name="frameShadow">
                               <enum>QFrame::Raised</enum>
                              </property>
-                             <widget class="QLabel" name="label_7">
-                              <property name="geometry">
-                               <rect>
-                                <x>20</x>
-                                <y>20</y>
-                                <width>121</width>
-                                <height>121</height>
-                               </rect>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">border: 1px solid silver;</string>
-                              </property>
-                              <property name="text">
-                               <string>TextLabel</string>
-                              </property>
-                             </widget>
-                             <widget class="QLabel" name="label_22">
-                              <property name="geometry">
-                               <rect>
-                                <x>20</x>
-                                <y>220</y>
-                                <width>271</width>
-                                <height>16</height>
-                               </rect>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <pointsize>14</pointsize>
-                               </font>
-                              </property>
-                              <property name="text">
-                               <string>Данные о человеке:</string>
-                              </property>
-                             </widget>
-                             <widget class="QWidget" name="layoutWidget">
-                              <property name="geometry">
-                               <rect>
-                                <x>150</x>
-                                <y>20</y>
-                                <width>281</width>
-                                <height>34</height>
-                               </rect>
-                              </property>
-                              <layout class="QVBoxLayout" name="verticalLayout_21">
-                               <item>
-                                <widget class="QLabel" name="label_10">
-                                 <property name="text">
-                                  <string>Cтатус</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QLabel" name="label_11">
-                                 <property name="text">
-                                  <string>TextLabel</string>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                             <widget class="QWidget" name="layoutWidget">
-                              <property name="geometry">
-                               <rect>
-                                <x>20</x>
-                                <y>240</y>
-                                <width>431</width>
-                                <height>411</height>
-                               </rect>
-                              </property>
-                              <layout class="QVBoxLayout" name="verticalLayout_22">
-                               <property name="spacing">
-                                <number>30</number>
-                               </property>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_10">
-                                 <property name="spacing">
-                                  <number>0</number>
-                                 </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_34">
+                              <item>
+                               <widget class="QWidget" name="widget_12" native="true">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>250</height>
+                                 </size>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_11">
                                  <item>
-                                  <widget class="QLabel" name="label_12">
-                                   <property name="text">
-                                    <string>ФИО:</string>
-                                   </property>
+                                  <widget class="QWidget" name="widget_14" native="true">
+                                   <layout class="QVBoxLayout" name="verticalLayout_35">
+                                    <property name="spacing">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="label_7">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>200</width>
+                                        <height>200</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>200</width>
+                                        <height>200</height>
+                                       </size>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">border: 1px solid silver;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_6">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>45</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                   </layout>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QLabel" name="label_13">
-                                   <property name="text">
-                                    <string>TextLabel</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_17">
-                                 <property name="spacing">
-                                  <number>0</number>
-                                 </property>
-                                 <item>
-                                  <widget class="QLabel" name="label_14">
-                                   <property name="text">
-                                    <string>Пол:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_15">
-                                   <property name="text">
-                                    <string>TextLabel</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_18">
-                                 <property name="spacing">
-                                  <number>0</number>
-                                 </property>
-                                 <item>
-                                  <widget class="QLabel" name="label_16">
-                                   <property name="text">
-                                    <string>Дата рождения:</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_17">
-                                   <property name="text">
-                                    <string>TextLabel</string>
-                                   </property>
+                                  <widget class="QWidget" name="widget_13" native="true">
+                                   <layout class="QVBoxLayout" name="verticalLayout_33">
+                                    <property name="spacing">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <layout class="QVBoxLayout" name="verticalLayout_21">
+                                      <item>
+                                       <widget class="QLabel" name="label_10">
+                                        <property name="text">
+                                         <string>Cтатус</string>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QLabel" name="label_11">
+                                        <property name="text">
+                                         <string>TextLabel</string>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                     </layout>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_4">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>10</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                   </layout>
                                   </widget>
                                  </item>
                                 </layout>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_19">
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLabel" name="label_22">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>14</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Данные о человеке:</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QWidget" name="widget_1" native="true">
+                                <layout class="QVBoxLayout" name="verticalLayout_22">
                                  <property name="spacing">
-                                  <number>0</number>
+                                  <number>30</number>
                                  </property>
                                  <item>
-                                  <widget class="QLabel" name="label_18">
-                                   <property name="text">
-                                    <string>Возраст</string>
+                                  <layout class="QVBoxLayout" name="verticalLayout_10">
+                                   <property name="spacing">
+                                    <number>0</number>
                                    </property>
-                                  </widget>
+                                   <item>
+                                    <widget class="QLabel" name="label_12">
+                                     <property name="text">
+                                      <string>ФИО:</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLabel" name="label_13">
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
                                  </item>
                                  <item>
-                                  <widget class="QLabel" name="label_19">
-                                   <property name="text">
-                                    <string>TextLabel</string>
+                                  <layout class="QVBoxLayout" name="verticalLayout_17">
+                                   <property name="spacing">
+                                    <number>0</number>
                                    </property>
-                                  </widget>
+                                   <item>
+                                    <widget class="QLabel" name="label_14">
+                                     <property name="text">
+                                      <string>Пол:</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLabel" name="label_15">
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </item>
+                                 <item>
+                                  <layout class="QVBoxLayout" name="verticalLayout_18">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLabel" name="label_16">
+                                     <property name="text">
+                                      <string>Дата рождения:</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLabel" name="label_17">
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </item>
+                                 <item>
+                                  <layout class="QVBoxLayout" name="verticalLayout_19">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLabel" name="label_18">
+                                     <property name="text">
+                                      <string>Возраст</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLabel" name="label_19">
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </item>
+                                 <item>
+                                  <layout class="QVBoxLayout" name="verticalLayout_20">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLabel" name="label_20">
+                                     <property name="text">
+                                      <string>Адресс проживания</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLabel" name="label_21">
+                                     <property name="text">
+                                      <string/>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </item>
+                                 <item>
+                                  <spacer name="verticalSpacer_5">
+                                   <property name="orientation">
+                                    <enum>Qt::Vertical</enum>
+                                   </property>
+                                   <property name="sizeHint" stdset="0">
+                                    <size>
+                                     <width>20</width>
+                                     <height>10</height>
+                                    </size>
+                                   </property>
+                                  </spacer>
                                  </item>
                                 </layout>
-                               </item>
-                               <item>
-                                <layout class="QVBoxLayout" name="verticalLayout_20">
-                                 <property name="spacing">
-                                  <number>0</number>
-                                 </property>
-                                 <item>
-                                  <widget class="QLabel" name="label_20">
-                                   <property name="text">
-                                    <string>Адресс проживания</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_21">
-                                   <property name="text">
-                                    <string>TextLabel</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                </layout>
-                               </item>
-                              </layout>
-                             </widget>
+                               </widget>
+                              </item>
+                             </layout>
                             </widget>
                            </item>
                           </layout>
@@ -791,11 +920,6 @@
                      </column>
                      <column>
                       <property name="text">
-                       <string>Пароль</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
                        <string>ФИО</string>
                       </property>
                      </column>
@@ -833,6 +957,13 @@
                       <number>0</number>
                      </property>
                      <item>
+                      <widget class="QPushButton" name="btn_clear_table_1">
+                       <property name="text">
+                        <string>Очистить таблицу</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <spacer name="horizontalSpacer_8">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
@@ -846,7 +977,7 @@
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="btn_get_date">
+                      <widget class="QPushButton" name="btn_get_date_1">
                        <property name="text">
                         <string>Прогрузить таблицу</string>
                        </property>
@@ -886,26 +1017,8 @@
                    <layout class="QGridLayout" name="gridLayout_12">
                     <item row="0" column="0">
                      <widget class="QSplitter" name="splitter">
-                      <property name="toolTipDuration">
-                       <number>-1</number>
-                      </property>
-                      <property name="autoFillBackground">
-                       <bool>false</bool>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Plain</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>1</number>
-                      </property>
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="opaqueResize">
-                       <bool>true</bool>
                       </property>
                       <widget class="QWidget" name="layoutWidget">
                        <layout class="QVBoxLayout" name="verticalLayout_32">
@@ -1027,6 +1140,13 @@
                            </spacer>
                           </item>
                           <item>
+                           <widget class="QLabel" name="label_status">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
                            <widget class="QPushButton" name="btn_upload_user_photo">
                             <property name="text">
                              <string>Загрузить фото</string>
@@ -1044,7 +1164,43 @@
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QTableWidget" name="tableWidget_2"/>
+                      <widget class="QTableWidget" name="tableWidget_2">
+                       <column>
+                        <property name="text">
+                         <string>Идентификатор</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Логин</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Пароль</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>ФИО</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Пол</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Дата рождения</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Адресс</string>
+                        </property>
+                       </column>
+                      </widget>
                       <widget class="QWidget" name="widget_10" native="true">
                        <layout class="QHBoxLayout" name="horizontalLayout_10">
                         <property name="spacing">
@@ -1063,6 +1219,13 @@
                          <number>0</number>
                         </property>
                         <item>
+                         <widget class="QPushButton" name="btn_clear_table_2">
+                          <property name="text">
+                           <string>Очистить таблицу</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <spacer name="horizontalSpacer_10">
                           <property name="orientation">
                            <enum>Qt::Horizontal</enum>
@@ -1076,14 +1239,14 @@
                          </spacer>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_6">
+                         <widget class="QPushButton" name="btn_add_upload">
                           <property name="text">
-                           <string>Удалить линию с пользователся</string>
+                           <string>Приминить изменения</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton">
+                         <widget class="QPushButton" name="btn_get_date_2">
                           <property name="text">
                            <string>Прогрузить таблицу</string>
                           </property>
