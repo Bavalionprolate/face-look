@@ -701,7 +701,7 @@ class Ui_MainWindow(object):
         self.action_6.setObjectName("action_6")
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_2.setCurrentIndex(0)
         self.btn_menu.toggled['bool'].connect(self.full_sidebar_widget.setHidden) # type: ignore
         self.btn_db_2.toggled['bool'].connect(self.btn_db_1.setChecked) # type: ignore
@@ -793,4 +793,4 @@ class Ui_MainWindow(object):
         self.action_3.setText(_translate("MainWindow", "Устройсва"))
         self.action_5.setText(_translate("MainWindow", "Базу данных"))
         self.action_6.setText(_translate("MainWindow", "Устройсва"))
-import resource_rc
+import assets.resource_rc

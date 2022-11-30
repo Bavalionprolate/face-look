@@ -2,6 +2,7 @@ import sys, mysql.connector #mysql-connector-python==8.0.29
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView, QAbstractItemView, QDialog, QFileDialog
 from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt, QSortFilterProxyModel
+from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt
 from PyQt5.QtGui import QPixmap
 from config import host, user, password, db
 
@@ -140,6 +141,11 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.result_table_1.horizontalHeader().setMinimumSectionSize(0)
 		self.result_table_1.viewport().installEventFilter(self)
 
+		self.result_table_1.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+		self.result_table_1.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+		self.result_table_1.horizontalHeader().setMinimumSectionSize(0)
+		self.result_table_1.viewport().installEventFilter(self)
+
 		self.result_table_2.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
 		self.btn_get_date_1.clicked.connect(self.on_btn_get_date_1)
@@ -148,6 +154,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_upload_user_photo.clicked.connect(self.on_btn_upload_user_photo)
 		self.btn_clear_table_1.clicked.connect(self.on_btn_clear_table_1)
 		self.btn_clear_table_2.clicked.connect(self.on_btn_clear_table_2)
+
 		# self.btn_add_upload.clicked.connect(self.on_btn_add_upload)
 
 	def getsamerowcell(self, columnname, table):
@@ -159,6 +166,16 @@ class MainWindow(QtWidgets.QMainWindow):
 			headertext = table.horizontalHeaderItem(x).text()
 			if columnname == headertext:
 				cell = table.item(row, x).text()
+
+		row = self.result_table_1.currentItem().row()
+		# col = widget.currentItem().column()
+
+		# loop through headers and find column number for given column name
+		headercount = self.result_table_1.columnCount()
+		for x in range(headercount):
+			headertext = self.result_table_1.horizontalHeaderItem(x).text()
+			if columnname == headertext:
+				cell = self.result_table_1.item(row, x).text()  # get cell at row, col
 				return cell
 		
 	def eventFilter(self, source, event):
@@ -193,6 +210,21 @@ class MainWindow(QtWidgets.QMainWindow):
 	# @pyqtSlot(bool)
 	# def on_btn_add_upload(self):
 	# 		print(col = self.result_table_2.currentColumn())		
+
+	@pyqtSlot(bool)
+	def on_btn_clear_table_1(self):
+		while (self.result_table_1.rowCount() > 0):
+			self.result_table_1.removeRow(0)
+
+	@pyqtSlot(bool)
+	def on_btn_clear_table_2(self):
+		while (self.result_table_2.rowCount() > 0):
+			self.result_table_2.removeRow(0)
+	
+	@pyqtSlot(bool)
+	def on_btn_upload_user_photo(self):
+		fname = QFileDialog.getOpenFileName(self, 'Open file', "")
+		self.appUI.label_status.setText(fname[0])
 
 	@pyqtSlot(bool)
 	def on_btn_clear_table_1(self):
