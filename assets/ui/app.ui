@@ -339,7 +339,7 @@
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="main_page">
              <layout class="QGridLayout" name="gridLayout_2">
@@ -422,7 +422,17 @@
                          <widget class="QWidget" name="photo">
                           <layout class="QVBoxLayout" name="verticalLayout_15">
                            <item>
+<<<<<<< HEAD
+                            <widget class="QLabel" name="label_upload_photo">
+=======
                             <widget class="QLabel" name="label_2">
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
+=======
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
+=======
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
                              <property name="styleSheet">
                               <string notr="true">border: 1px solid silver;</string>
                              </property>
@@ -482,7 +492,7 @@
                                </spacer>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="pushButton_3">
+                               <widget class="QPushButton" name="btn_add_photo">
                                 <property name="text">
                                  <string>Добавить фото</string>
                                 </property>
@@ -599,7 +609,19 @@
                                      <number>0</number>
                                     </property>
                                     <item>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                     <widget class="QLabel" name="label_photo_user">
+=======
                                      <widget class="QLabel" name="label_7">
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
+=======
+                                     <widget class="QLabel" name="label_7">
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
+=======
+                                     <widget class="QLabel" name="label_7">
+>>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
                                       <property name="minimumSize">
                                        <size>
                                         <width>200</width>
