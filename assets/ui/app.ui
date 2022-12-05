@@ -422,17 +422,7 @@
                          <widget class="QWidget" name="photo">
                           <layout class="QVBoxLayout" name="verticalLayout_15">
                            <item>
-<<<<<<< HEAD
                             <widget class="QLabel" name="label_upload_photo">
-=======
-                            <widget class="QLabel" name="label_2">
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
-=======
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
-=======
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
                              <property name="styleSheet">
                               <string notr="true">border: 1px solid silver;</string>
                              </property>
@@ -609,19 +599,7 @@
                                      <number>0</number>
                                     </property>
                                     <item>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                                      <widget class="QLabel" name="label_photo_user">
-=======
-                                     <widget class="QLabel" name="label_7">
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
-=======
-                                     <widget class="QLabel" name="label_7">
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
-=======
-                                     <widget class="QLabel" name="label_7">
->>>>>>> b7f90849163cdf416fb74d5ccc7b5f0445a803f2
                                       <property name="minimumSize">
                                        <size>
                                         <width>200</width>
