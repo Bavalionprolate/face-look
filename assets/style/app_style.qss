@@ -122,10 +122,6 @@
     border-radius: 15px;
 }
 
-/* #main_page #left QComboBox{
-    margin-left: 10px;
-} */
-
 #main_page QPushButton{
     border-radius: 3px;
 	margin: 3px;
@@ -170,11 +166,6 @@
     min-width: 400px;
 }
 
-#widget_7 #widget_11 QPushButton{
-    max-height: 10px;
-    min-width: 10px;
-}
-
 #widget_9 #widget_12 QLineEdit{
     border-radius: 3px;
 	margin: 3px;
@@ -183,11 +174,6 @@
 	color: #2A2929;
     max-height: 10px;
     min-width: 400px;
-}
-
-#widget_9 #widget_12 QPushButton{
-    max-height: 10px;
-    min-width: 10px;
 }
 
 #right, #left{
@@ -238,6 +224,21 @@
 	padding: 10px;
 	background-color: #2A2929;
 	color: white;
+}
+
+#widget_15 QPushButton {
+	border-radius: 3px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #2A2929;
+	color: white;
+}
+#widget_15 QLineEdit {
+    border-radius: 3px;
+	margin: 3px;
+	padding: 10px;
+	background-color: #ffffff;
+	color: #2A2929;
 }
 
 #scrollArea_2{
@@ -328,22 +329,6 @@ QTableWidget QScrollBar::add-line:horizontal, QTableWidget QScrollBar::add-line:
 
 #frame_2{
     background-color: #fff;
-}
-
-#widget_2 QPushButton {
-	border-radius: 3px;
-	margin: 10px;
-    width: 100px;
-	padding: 10px;
-	background-color: #2A2929;
-	color: white;
-}
-#widget_2 QLineEdit {
-    border-radius: 3px;
-    border: 0;
-    background-color: white;
-    color: #2A2929;
-    padding: 6px;
 }
 
 QSplitter::handle{

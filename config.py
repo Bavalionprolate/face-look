@@ -1,4 +1,4 @@
-host='localhost'
-user='root'
+host = 'localhost'
+user = 'root'
 password = ''
-db='19261_face_look'
+db = '19261_face_look'

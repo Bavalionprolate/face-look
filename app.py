@@ -1,15 +1,15 @@
-import sys, mysql.connector #mysql-connector-python==8.0.29
+import sys, os, base64, face_recognition, datetime, shutil, re
+import mysql.connector, base64
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView, QAbstractItemView, QDialog, QFileDialog
 from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt, QSortFilterProxyModel
 from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt
 from PyQt5.QtGui import QPixmap, QIcon
-from config import host, user, password, db
-
-import base64
 from PIL import Image #pip install Pillow
 
 from assets.ui.ui_app import Ui_MainWindow
+
+from config import host, user, password, db
 
 class ConnectToMySQL():
 	def __init__(self):
@@ -56,6 +56,40 @@ class ConnectToMySQL():
 			if self.con:
 				self.con.close()
 
+	def RetrieveOutBlob(self, id):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+			sql = f"SELECT * FROM `user` WHERE user.id = {id}"
+			cursor.execute(sql)
+			result = cursor.fetchone()
+			return result
+
+		except Exception as ex:
+			print("get date fail")
+			print(ex)
+
+		finally:
+			if self.con:
+				self.con.close()
+
+	def RetriveBlobImg(self):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+			sql = f"SELECT * FROM photo_user"
+			cursor.execute(sql)
+			result = cursor.fetchall()
+			return result
+
+		except Exception as ex:
+			print("get date fail")
+			print(ex)
+
+		finally:
+			if self.con:
+				self.con.close()
+
 	def RetriveBlob(self, ID):
 		try:
 			self.connect()
@@ -65,6 +99,7 @@ class ConnectToMySQL():
 			result = cursor.fetchone()
 
 			return result
+
 		except Exception as ex:
 			print("get date fail")
 			print(ex)
@@ -131,9 +166,13 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_add_upload = self.appUI.btn_add_upload
 		self.btn_add_photo = self.appUI.btn_add_photo
 		self.bnt_start_process = self.appUI.pushButton_5
+		self.btn_connect = self.appUI.btn_connect
+		self.btn_del_connect = self.appUI.btn_del_connect
 		
 		self.result_table_1 = self.appUI.tableWidget
 		self.result_table_2 = self.appUI.tableWidget_2
+
+		self.appUI.status_label_2.hide()
 
 		self.result_table_2.hide()
 		self.appUI.widget_10.hide()
@@ -150,6 +189,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		self.result_table_2.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
+		self.btn_connect.clicked.connect(self.include_date_base)
+		self.btn_del_connect.clicked.connect(self.on_btn_del_connect)
 		self.btn_get_date_1.clicked.connect(self.on_btn_get_date_1)
 		self.btn_get_date_2.clicked.connect(self.on_btn_get_date_2)
 		self.btn_add_user_in_bd.clicked.connect(self.on_btn_add_user_in_bd)
@@ -157,9 +198,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_clear_table_1.clicked.connect(self.on_btn_clear_table_1)
 		self.btn_clear_table_2.clicked.connect(self.on_btn_clear_table_2)
 		self.btn_add_photo.clicked.connect(self.on_btn_add_photo)
-		self.bnt_start_process.clicked.connect(self.on_bnt_start_process)
-
-		# self.btn_add_upload.clicked.connect(self.on_btn_add_upload)
+		self.bnt_start_process.clicked.connect(self.on_bnt_start_process)					
 
 	def getsamerowcell(self, columnname, table):
 
@@ -216,22 +255,124 @@ class MainWindow(QtWidgets.QMainWindow):
 		return fname[0]
 	
 	@pyqtSlot(bool)
-	def on_bnt_start_process(self):
-		if (photo == ''):
-			msgBox = QMessageBox()
-			msgBox.setIcon(QMessageBox.Information)
-			msgBox.setText("Для начала анализа добавьте фотографию")
-			msgBox.setWindowTitle("Ошибка")
-			msgBox.setStandardButtons(QMessageBox.Ok)
-			msgBox.exec()
-		else:
-			print(self.photo)
+	def on_bnt_start_process(self):	
+
+		result = ConnectToMySQL().RetriveBlobImg()
+		find = False
+
+		try:
+			self.appUI.label_11.setText("Идет распознавание")
+
+			for i in range(len(result)):
+				id = result[i]['User_id']
+
+				with open(f"assets/tmp/recognition/tmp{id}.jpg", "wb") as fh:
+					fh.write(base64.decodebytes(result[i]['photo']))
+
+				if not os.path.exists('assets/tmp/recognition'):
+					print("[error] no serch directory")
+					sys.exit()
+
+			know_encodings = []
+			images = os.listdir('assets/tmp/recognition')
+		
+			for (j, image) in enumerate(images):
+
+				face_img = face_recognition.load_image_file(f'assets/tmp/recognition/{image}')
+				face_enc = face_recognition.face_encodings(face_img)[0]
+
+				if len(know_encodings) == 0:
+					know_encodings.append(face_enc)
+				else:
+					for item in range(0, len(know_encodings)):
+						result = face_recognition.compare_faces([face_enc], know_encodings[item])
+
+						if result[0]:
+							know_encodings.append(face_enc)
+
+							id = re.sub("[t|m|p|.|j|p|g]", "", image)
+
+							db = ConnectToMySQL()
+							info = db.RetrieveOutBlob(id)
+
+							age = str(info['birthday']).split('-')[0]
+							age = int(age) - int(datetime.datetime.now().year)
+							age = re.sub("-", "", str(age))
+
+							self.appUI.label_11.setText('Присутствует в базе данны')
+							self.appUI.label_13.setText(info['fio'])
+							self.appUI.label_15.setText(info['pol'])
+							self.appUI.label_17.setText(str(info['birthday']))
+							self.appUI.label_19.setText(age)
+							self.appUI.label_21.setText(str(info['address']))
+
+							find = True
+							break
+						else:
+							self.appUI.label_11.setText('Такого человека нет в базе данных')
+							self.appUI.label_13.clear()
+							self.appUI.label_15.clear()
+							self.appUI.label_17.clear()
+							self.appUI.label_19.clear()
+							self.appUI.label_21.clear()
+			
+							break
+				if find:
+					break 
+		finally:
+			for image in images:
+				print('удаленно фото', image)
+				os.remove(f'assets/tmp/recognition/{image}')
+	@pyqtSlot(bool)
+	def on_btn_del_connect(self):
+		date = [
+			"host = ''\n",
+			"user = ''\n",
+			"password = ''\n",
+			"db = ''\n"
+		]
+		with open('config.py', 'w+') as f:
+			f.writelines(date)
+			f.close()
+		msgBox = QMessageBox()
+		msgBox.setIcon(QMessageBox.Information)
+		msgBox.setText("Подключение к база данных успешно отключено\nПерезагрузите программу для дальнейшей работы !")
+		msgBox.setWindowTitle("Уведомление")
+		msgBox.setStandardButtons(QMessageBox.Ok)
+		msgBox.exec()
+	
+	@pyqtSlot(bool)
+	def include_date_base(self):
+		host_bd = self.appUI.lineEdit_host.text()
+		user_bd = self.appUI.lineEdit_user.text()
+		password_bd = self.appUI.lineEdit_password_2.text()
+		name_bd = self.appUI.lineEdit_name_bd.text()
+		date = [
+			f"host = '{host_bd}'\n",
+			f"user = '{user_bd}'\n",
+			f"password = '{password_bd}'\n",
+			f"db = '{name_bd}'\n"
+		]
+
+		with open('config.py', 'w+') as f:
+			f.writelines(date)
+			f.close()
+		
+		msgBox = QMessageBox()
+		msgBox.setIcon(QMessageBox.Information)
+		msgBox.setText("База данных была добавлена\nПерезагрузите программу для дальнейшей работы !")
+		msgBox.setWindowTitle("Уведомление")
+		msgBox.setStandardButtons(QMessageBox.Ok)
+		msgBox.exec()
 
 	@pyqtSlot(bool)
 	def on_btn_add_photo(self):
 		label = self.appUI.label_upload_photo
-		self.photo = self.OpenFileDiolog()
-		label.setPixmap(QPixmap(self.photo).scaled(500, 690))
+		photo = self.OpenFileDiolog()
+		self.appUI.status_label_2.setText(photo)
+		self.path = self.appUI.status_label_2.text()
+		shutil.copyfile(self.path, "assets/tmp/recognition/past_user_image.jpg")
+		label.setPixmap(QPixmap(photo).scaled(500, 690))
 		label.setScaledContents(True)
 
 	@pyqtSlot(bool)
