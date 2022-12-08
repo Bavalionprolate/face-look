@@ -8,6 +8,7 @@ from PyQt5.QtGui import QPixmap, QIcon
 from PIL import Image #pip install Pillow
 
 from assets.ui.ui_app import Ui_MainWindow
+from assets.ui.ui_authorization import Ui_Authorization
 
 from config import host, user, password, db
 
@@ -21,6 +22,40 @@ class ConnectToMySQL():
 				password = password,
 				db = db,
 		)
+
+	def rules(self):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+			info_user = "SELECT * FROM prava"
+			cursor.execute(info_user)
+			result = cursor.fetchall()
+			return result
+
+		except Exception as ex:
+			print("get date fail")
+			print(ex)
+
+		finally:
+			if self.con:
+				self.con.close()	
+
+	def connect_auth_user(self):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+			info_user = "SELECT id, login, password FROM user"
+			cursor.execute(info_user)
+			result = cursor.fetchall()
+			return result
+
+		except Exception as ex:
+			print("get date fail")
+			print(ex)
+
+		finally:
+			if self.con:
+				self.con.close()	
 
 	def get_id_data_from_db(self):
 		try:
@@ -145,6 +180,53 @@ class ConnectToMySQL():
 			if self.con:
 				self.con.close()
 
+class Authorization(QtWidgets.QWidget):
+	def __init__(self):
+		super(Authorization, self).__init__() 
+
+		self.appUI = Ui_Authorization()
+		self.appUI.setupUi(self)
+
+		self.auth_user = self.appUI.pushButton
+		self.status = self.appUI.label_4
+
+		self.auth_user.clicked.connect(self.on_auth_user)
+
+	@pyqtSlot(bool)
+	def on_auth_user(self):
+
+		self.user_login = self.appUI.lineEdit_login_auth.text()
+		self.user_password = self.appUI.lineEdit_pass_auth.text()
+
+		self.connect = ConnectToMySQL()
+		result = self.connect.connect_auth_user()
+		rules = self.connect.rules()
+		
+		for item in result:
+			if (not self.user_login) or (not self.user_password):
+				self.status.setText('Вы не ввели логин или пароль')
+			else:
+				if (str(self.user_login) == str(item['login']) and str(self.user_password) == str(item['password'])):
+					self.status.clear()
+					
+					self.username = item['login']
+					
+					self.window = MainWindow()
+					window.label_user.setText(self.username)
+					
+					for i in rules:
+						if (item['id'] == i['is_admin']):
+							window.btn_add_1.show()
+							window.btn_add_2.show()
+						else:
+							window.btn_add_1.hide()
+							window.btn_add_2.hide()
+					
+					self.close()
+
+				elif (str(self.user_login) != str(item['login']) and str(self.user_password) == str(item['password']) or str(self.user_login) == str(item['login']) and str(self.user_password) != str(item['password'])):
+					self.status.setText('Вы ввели не верный логин или пароль')		
+
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__() 
@@ -168,6 +250,14 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.bnt_start_process = self.appUI.pushButton_5
 		self.btn_connect = self.appUI.btn_connect
 		self.btn_del_connect = self.appUI.btn_del_connect
+		self.btn_user = self.appUI.btn_user
+		
+		self.btn_add_1 = self.appUI.btn_add_1
+		self.btn_add_2 = self.appUI.btn_add_2
+		self.btn_add_1.hide()
+		self.btn_add_2.hide()
+
+		self.label_user = self.appUI.label_user
 		
 		self.result_table_1 = self.appUI.tableWidget
 		self.result_table_2 = self.appUI.tableWidget_2
@@ -198,7 +288,8 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_clear_table_1.clicked.connect(self.on_btn_clear_table_1)
 		self.btn_clear_table_2.clicked.connect(self.on_btn_clear_table_2)
 		self.btn_add_photo.clicked.connect(self.on_btn_add_photo)
-		self.bnt_start_process.clicked.connect(self.on_bnt_start_process)					
+		self.bnt_start_process.clicked.connect(self.on_bnt_start_process)	
+		self.btn_user.clicked.connect(self.on_btn_user)
 
 	def getsamerowcell(self, columnname, table):
 
@@ -251,17 +342,24 @@ class MainWindow(QtWidgets.QMainWindow):
 		return QObject.event(source, event)
 	
 	def OpenFileDiolog(self):
+
 		fname = QFileDialog.getOpenFileName(self, 'Open file', "")
 		return fname[0]
 	
+	@pyqtSlot(bool)
+	def on_btn_user(self):
+		self.window = Authorization()
+		self.window.show()
+		
 	@pyqtSlot(bool)
 	def on_bnt_start_process(self):	
 
 		result = ConnectToMySQL().RetriveBlobImg()
 		find = False
 
+		self.appUI.label_11.setText("Идет распознавание")
+
 		try:
-			self.appUI.label_11.setText("Идет распознавание")
 
 			for i in range(len(result)):
 				id = result[i]['User_id']
@@ -319,6 +417,14 @@ class MainWindow(QtWidgets.QMainWindow):
 							break
 				if find:
 					break 
+		except Exception:
+			self.appUI.label_11.setText("Лицо было не найденно")
+			self.appUI.label_13.clear()
+			self.appUI.label_15.clear()
+			self.appUI.label_17.clear()
+			self.appUI.label_19.clear()
+			self.appUI.label_21.clear()
+
 		finally:
 			for image in images:
 				print('удаленно фото', image)
@@ -367,13 +473,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
 	@pyqtSlot(bool)
 	def on_btn_add_photo(self):
-		label = self.appUI.label_upload_photo
-		photo = self.OpenFileDiolog()
-		self.appUI.status_label_2.setText(photo)
-		self.path = self.appUI.status_label_2.text()
-		shutil.copyfile(self.path, "assets/tmp/recognition/past_user_image.jpg")
-		label.setPixmap(QPixmap(photo).scaled(500, 690))
-		label.setScaledContents(True)
+		try:
+			label = self.appUI.label_upload_photo
+			photo = self.OpenFileDiolog()
+			self.appUI.status_label_2.setText(photo)
+			self.path = self.appUI.status_label_2.text()
+			shutil.copyfile(self.path, "assets/tmp/recognition/past_user_image.jpg")
+			label.setPixmap(QPixmap(photo).scaled(500, 690))
+			label.setScaledContents(True)
+		except Exception:
+			msgBox = QMessageBox()
+			msgBox.setIcon(QMessageBox.Information)
+			msgBox.setText("Вы не вставили фото")
+			msgBox.setWindowTitle("Ошибка")
+			msgBox.setStandardButtons(QMessageBox.Ok)
+			msgBox.exec()
 
 	@pyqtSlot(bool)
 	def on_btn_clear_table_1(self):

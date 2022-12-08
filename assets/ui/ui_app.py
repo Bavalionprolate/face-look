@@ -125,6 +125,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.btn_menu)
         spacerItem3 = QtWidgets.QSpacerItem(619, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem3)
+        self.label_user = QtWidgets.QLabel(self.widget)
+        self.label_user.setText("")
+        self.label_user.setObjectName("label_user")
+        self.horizontalLayout_3.addWidget(self.label_user)
         self.btn_user = QtWidgets.QPushButton(self.widget)
         self.btn_user.setText("")
         icon6 = QtGui.QIcon()
@@ -220,7 +224,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 503, 1000))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 300, 1000))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -555,7 +559,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -10, 1105, 1000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1105, 1000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -830,3 +834,13 @@ class Ui_MainWindow(object):
         self.action_5.setText(_translate("MainWindow", "Базу данных"))
         self.action_6.setText(_translate("MainWindow", "Устройсва"))
 import assets.resource_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
