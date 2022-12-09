@@ -206,26 +206,27 @@ class Authorization(QtWidgets.QWidget):
 			if (not self.user_login) or (not self.user_password):
 				self.status.setText('Вы не ввели логин или пароль')
 			else:
-				if (str(self.user_login) == str(item['login']) and str(self.user_password) == str(item['password'])):
-					self.status.clear()
-					
-					self.username = item['login']
-					
-					self.window = MainWindow()
-					window.label_user.setText(self.username)
-					
-					for i in rules:
-						if (item['id'] == i['is_admin']):
+				for i in rules:
+					if (str(self.user_login) == str(item['login']) and str(self.user_password) == str(item['password']) and (item['id'] == i['User_id'] and i['is_programm_user'] == 1)):
+						self.status.clear()
+						
+						self.username = item['login']
+						
+						self.window = MainWindow()
+						window.label_user.setText(self.username)
+						
+						
+						if (item['id'] == i['User_id'] and i['is_admin'] == 1):
 							window.btn_add_1.show()
 							window.btn_add_2.show()
 						else:
 							window.btn_add_1.hide()
 							window.btn_add_2.hide()
 					
-					self.close()
-
-				elif (str(self.user_login) != str(item['login']) and str(self.user_password) == str(item['password']) or str(self.user_login) == str(item['login']) and str(self.user_password) != str(item['password'])):
-					self.status.setText('Вы ввели не верный логин или пароль')		
+						self.close()
+					elif (str(self.user_login) != str(item['login']) and str(self.user_password) == str(item['password']) or str(self.user_login) == str(item['login']) and str(self.user_password) != str(item['password'])):
+						self.status.setText('Вы ввели не верный логин или пароль')
+						window.label_user.clear()
 
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self):
@@ -251,6 +252,9 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_connect = self.appUI.btn_connect
 		self.btn_del_connect = self.appUI.btn_del_connect
 		self.btn_user = self.appUI.btn_user
+
+		self.comboBox = self.appUI.comboBox
+		self.comboBox.hide()
 		
 		self.btn_add_1 = self.appUI.btn_add_1
 		self.btn_add_2 = self.appUI.btn_add_2
