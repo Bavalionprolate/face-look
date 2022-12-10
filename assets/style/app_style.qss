@@ -1,6 +1,40 @@
 #MainWindow{
     background-color: #fff;
-    min-width: 650px;
+    min-width: 1200px;
+}
+
+#Authorization{
+    min-height: 500px;
+    background: #ffffff;
+}
+
+#Authorization #label{
+    font-size: 18px;
+    color: #2A2929;
+}
+
+#Authorization #widget_3{
+    background: rgb(233, 233, 233);
+    max-width: 400px;
+    min-width: 300px;
+    border-radius: 15px;
+}
+
+#Authorization QLineEdit{
+    border-radius: 3px;
+	margin: 3px;
+	padding: 5px;
+	background-color: #ffffff;
+	color: #2A2929;
+    max-height: 10px;
+}
+#Authorization QPushButton{
+    border: 0;
+    border-radius: 3px;
+	margin: 3px;
+	padding: 10px;
+	background-color: #2A2929;
+	color: white;    
 }
 
 #btn_menu{
@@ -282,7 +316,7 @@ QScrollBar::add-line:vertical
     subcontrol-origin: margin;
 }
 
-QTableWidget QScrollBar:horizontal
+QScrollBar:horizontal
 {
     background-color: #ffffff;
     margin: 3px 15px 3px 15px;
@@ -291,7 +325,7 @@ QTableWidget QScrollBar:horizontal
     border-radius: 4px;
 }
 
-QTableWidget QScrollBar:vertical
+QScrollBar:vertical
 {
     background-color: #ffffff;
     width: 15px;
@@ -300,14 +334,14 @@ QTableWidget QScrollBar:vertical
     border-radius: 4px;
 }
 
-QTableWidget QScrollBar::handle:horizontal, QTableWidget QScrollBar::handle:vertical
+QScrollBar::handle:horizontal, QScrollBar::handle:vertical
 {
     background-color: silver;
     min-height: 5px;
     border-radius: 4px;
 }
 
-QTableWidget QScrollBar::sub-line:horizontal, QTableWidget QScrollBar::sub-line:vertical
+QScrollBar::sub-line:horizontal, QScrollBar::sub-line:vertical
 {
     margin: 3px 0px 3px 0px;
     border: none;
@@ -317,7 +351,7 @@ QTableWidget QScrollBar::sub-line:horizontal, QTableWidget QScrollBar::sub-line:
     subcontrol-origin: margin;
 }
 
-QTableWidget QScrollBar::add-line:horizontal, QTableWidget QScrollBar::add-line:vertical
+QScrollBar::add-line:horizontal, QScrollBar::add-line:vertical
 {
     margin: 3px 0px 3px 0px;
     border: none;
