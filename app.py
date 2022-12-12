@@ -1,11 +1,11 @@
-import sys, os, base64, face_recognition, datetime, shutil, re
-import mysql.connector, base64
+import sys, os, base64, face_recognition, datetime, shutil, re,  mysql.connector, base64
+from xlsxwriter.workbook import Workbook
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView, QAbstractItemView, QDialog, QFileDialog
 from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt, QSortFilterProxyModel
 from PyQt5.QtCore import pyqtSlot, QObject, QEvent, Qt
 from PyQt5.QtGui import QPixmap, QIcon
-from PIL import Image #pip install Pillow
+from PIL import Image
 
 from assets.ui.ui_app import Ui_MainWindow
 from assets.ui.ui_authorization import Ui_Authorization
@@ -283,9 +283,12 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_user = self.appUI.btn_user
 		self.btn_del = self.appUI.btn_del
 		self.btn_add_upload = self.appUI.btn_add_upload
+		self.btn_export_in_exel = self.appUI.btn_export_in_exel
 
 		self.comboBox = self.appUI.comboBox
 		self.comboBox.hide()
+
+		self.appUI.label_photo_user.hide()
 		
 		self.btn_add_1 = self.appUI.btn_add_1
 		self.btn_add_2 = self.appUI.btn_add_2
@@ -328,6 +331,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_logout_2.clicked.connect(self.btn_logout)
 		self.btn_del.clicked.connect(self.on_btn_del)
 		self.btn_add_upload.clicked.connect(self.on_btn_add_upload)
+		self.btn_export_in_exel.clicked.connect(self.on_btn_export_in_exel)
 
 	def getsamerowcell(self, columnname, table):
 
@@ -375,6 +379,39 @@ class MainWindow(QtWidgets.QMainWindow):
 		return fname[0]
 	
 	@pyqtSlot(bool)
+	def on_btn_export_in_exel(self):
+		fileName, ok = QFileDialog.getSaveFileName(
+			self,
+			"Сохранить файл",
+			".",
+			"All Files(*.xlsx)"
+		)
+		if not fileName:
+			return 
+
+		_list = []
+		model = self.result_table_2.model()
+		for row in range(model.rowCount()):
+			_r = []
+			for column in range(model.columnCount()):
+				_r.append("{}".format(model.index(row, column).data() or ""))
+			_list.append(_r)
+		print(fileName)
+		
+		workbook = Workbook(fileName)
+		worksheet = workbook.add_worksheet()
+
+		for r, row in enumerate(_list):
+			for c, col in enumerate(row):
+				worksheet.write(r, c, col)        
+		workbook.close()  
+		msg = QMessageBox.information(
+			self, 
+			"Success!", 
+			f"Данные сохранены в файле: \n{fileName}"
+		)            
+	
+	@pyqtSlot(bool)
 	def on_btn_add_upload(self):
 		row = self.result_table_2.currentIndex().row()
 
@@ -397,7 +434,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		if row == -1:
 			QMessageBox.information(self, 'Внимание', 'Выберите запись для удаления.')
 			return   
-		       
+			   
 		db = ConnectToMySQL()
 		db.del_user(self.getsamerowcell('Идентификатор', self.result_table_2))
 
