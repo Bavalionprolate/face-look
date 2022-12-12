@@ -19,6 +19,7 @@ class ConnectToMySQL():
 		self.con = mysql.connector.MySQLConnection(
 				host = host,
 				user = user,
+				charset='utf8',
 				password = password,
 				db = db,
 		)
@@ -32,13 +33,50 @@ class ConnectToMySQL():
 			result = cursor.fetchall()
 			return result
 
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
-
 		finally:
 			if self.con:
 				self.con.close()	
+	
+	def upload_info_user(self, id, login, password, fio, pol, birthday, address, is_admin, is_programm_user):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+
+			sql = f"update user set `login` = '{login}', `password` = '{password}', `fio` = '{fio}', `pol` = '{pol}', `birthday` = '{birthday}', `address` = '{address}' where `id` = '{id}';"
+			cursor.execute(sql)
+			self.con.commit()
+
+			sql = f"update prava set `is_admin` = '{is_admin}', `is_programm_user` = '{is_programm_user}' where `User_id` = '{id}';"
+			cursor.execute(sql)
+			self.con.commit()
+
+			cursor.rowcount
+
+		finally:
+			if self.con:
+				cursor.close()
+				self.con.close()
+
+	def del_user(self, id):
+		try:
+			self.connect()
+			cursor = self.con.cursor(dictionary=True)
+
+			sql = f"DELETE FROM photo_user WHERE User_id = '{id}';"
+			cursor.execute(sql)
+			self.con.commit()
+
+			sql = f"DELETE FROM prava WHERE User_id = '{id}';"
+			cursor.execute(sql)
+			self.con.commit()
+
+			sql = f"DELETE FROM user WHERE id = '{id}';"
+			cursor.execute(sql)
+			self.con.commit()
+
+		finally:
+			if self.con:
+				self.con.close()
 
 	def connect_auth_user(self):
 		try:
@@ -48,10 +86,6 @@ class ConnectToMySQL():
 			cursor.execute(info_user)
 			result = cursor.fetchall()
 			return result
-
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
 
 		finally:
 			if self.con:
@@ -66,10 +100,6 @@ class ConnectToMySQL():
 			result = cursor.fetchall()
 			return result
 
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
-
 		finally:
 			if self.con:
 				self.con.close()
@@ -82,10 +112,6 @@ class ConnectToMySQL():
 			cursor.execute(info_user)
 			result = cursor.fetchall()
 			return result
-
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
 
 		finally:
 			if self.con:
@@ -100,10 +126,6 @@ class ConnectToMySQL():
 			result = cursor.fetchone()
 			return result
 
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
-
 		finally:
 			if self.con:
 				self.con.close()
@@ -116,10 +138,6 @@ class ConnectToMySQL():
 			cursor.execute(sql)
 			result = cursor.fetchall()
 			return result
-
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
 
 		finally:
 			if self.con:
@@ -134,10 +152,6 @@ class ConnectToMySQL():
 			result = cursor.fetchone()
 
 			return result
-
-		except Exception as ex:
-			print("get date fail")
-			print(ex)
 
 		finally:
 			if self.con:
@@ -178,7 +192,7 @@ class ConnectToMySQL():
 			msgBox = QMessageBox()
 			msgBox.setIcon(QMessageBox.Information)
 			msgBox.setText("Новый пользователь добавлен")
-			msgBox.setWindowTitle("Уведомление")
+			msgBox.setWindowTitle("Внимание")
 			msgBox.setStandardButtons(QMessageBox.Ok)
 			msgBox.exec()
 			if self.con:
@@ -237,10 +251,11 @@ class Authorization(QtWidgets.QWidget):
 							window.label_user.setText(self.username)
 
 							self.close()
+						
+						if (item['id'] == i['User_id'] and i['is_admin'] == 0 and i['is_programm_user'] == 0):
+							self.status.setText('У пользователя нет прав для входа')
 
 						break
-
-
 
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self):
@@ -266,6 +281,8 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_connect = self.appUI.btn_connect
 		self.btn_del_connect = self.appUI.btn_del_connect
 		self.btn_user = self.appUI.btn_user
+		self.btn_del = self.appUI.btn_del
+		self.btn_add_upload = self.appUI.btn_add_upload
 
 		self.comboBox = self.appUI.comboBox
 		self.comboBox.hide()
@@ -283,9 +300,6 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.result_table_2 = self.appUI.tableWidget_2
 
 		self.appUI.status_label_2.hide()
-
-		# self.result_table_2.hide()
-		# self.appUI.widget_10.hide()
 
 		self.result_table_1.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 		self.result_table_1.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
@@ -312,6 +326,8 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_user.clicked.connect(self.on_btn_user)
 		self.btn_logout_1.clicked.connect(self.btn_logout)
 		self.btn_logout_2.clicked.connect(self.btn_logout)
+		self.btn_del.clicked.connect(self.on_btn_del)
+		self.btn_add_upload.clicked.connect(self.on_btn_add_upload)
 
 	def getsamerowcell(self, columnname, table):
 
@@ -322,16 +338,6 @@ class MainWindow(QtWidgets.QMainWindow):
 			headertext = table.horizontalHeaderItem(x).text()
 			if columnname == headertext:
 				cell = table.item(row, x).text()
-
-		row = self.result_table_1.currentItem().row()
-		# col = widget.currentItem().column()
-
-		# loop through headers and find column number for given column name
-		headercount = self.result_table_1.columnCount()
-		for x in range(headercount):
-			headertext = self.result_table_1.horizontalHeaderItem(x).text()
-			if columnname == headertext:
-				cell = self.result_table_1.item(row, x).text()
 				return cell
 		
 	def eventFilter(self, source, event):
@@ -367,6 +373,33 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		fname = QFileDialog.getOpenFileName(self, 'Open file', "")
 		return fname[0]
+	
+	@pyqtSlot(bool)
+	def on_btn_add_upload(self):
+		row = self.result_table_2.currentIndex().row()
+
+		id = self.result_table_2.item(row, 0).text()
+		login = self.result_table_2.item(row, 1).text()
+		password = self.result_table_2.item(row, 2).text()
+		fio = self.result_table_2.item(row, 3).text()
+		pol = self.result_table_2.item(row, 4).text()
+		birthday = self.result_table_2.item(row, 5).text()
+		address = self.result_table_2.item(row, 6).text()
+		is_admin = self.result_table_2.item(row, 7).text()
+		is_programm_user = self.result_table_2.item(row, 8).text()
+
+		db = ConnectToMySQL()
+		db.upload_info_user(id, login, password, fio, pol, birthday, address, is_admin, is_programm_user)
+
+	@pyqtSlot(bool)
+	def on_btn_del(self):
+		row = self.result_table_2.currentIndex().row()
+		if row == -1:
+			QMessageBox.information(self, 'Внимание', 'Выберите запись для удаления.')
+			return   
+		       
+		db = ConnectToMySQL()
+		db.del_user(self.getsamerowcell('Идентификатор', self.result_table_2))
 
 	@pyqtSlot(bool)
 	def btn_logout(self):
@@ -412,8 +445,7 @@ class MainWindow(QtWidgets.QMainWindow):
 						fh.write(base64.decodebytes(result[i]['photo']))
 
 					if not os.path.exists('assets/tmp/recognition'):
-						print("[error] no serch directory")
-						sys.exit()
+						os.makedirs("assets/tmp/recognition")
 
 				know_encodings = []
 				images = os.listdir('assets/tmp/recognition')
@@ -471,7 +503,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 			finally:
 				for image in images:
-					print('удаленно фото', image)
 					os.remove(f'assets/tmp/recognition/{image}')
 
 	@pyqtSlot(bool)
@@ -522,7 +553,7 @@ class MainWindow(QtWidgets.QMainWindow):
 				msgBox = QMessageBox()
 				msgBox.setIcon(QMessageBox.Information)
 				msgBox.setText("Вы не вошли в аккаунт")
-				msgBox.setWindowTitle("Ошибка")
+				msgBox.setWindowTitle("Внимание")
 				msgBox.setStandardButtons(QMessageBox.Ok)
 				msgBox.exec()
 		else:
@@ -531,24 +562,20 @@ class MainWindow(QtWidgets.QMainWindow):
 				photo = self.OpenFileDiolog()
 				self.appUI.status_label_2.setText(photo)
 				self.path = self.appUI.status_label_2.text()
+
 				if not os.path.exists("assets/tmp/recognition"):
 					os.makedirs("assets/tmp/recognition") 
+
 				shutil.copyfile(self.path, "assets/tmp/recognition/past_user_image.jpg")
 				label.setPixmap((QPixmap(photo)))
-				# .scaled(490, 740)
-				# label.setScaledContents(True)
+
 			except Exception:
 				msgBox = QMessageBox()
 				msgBox.setIcon(QMessageBox.Information)
 				msgBox.setText("Вы не вставили фото")
-				msgBox.setWindowTitle("Ошибка")
+				msgBox.setWindowTitle("Внимание")
 				msgBox.setStandardButtons(QMessageBox.Ok)
 				msgBox.exec()
-
-	@pyqtSlot(bool)
-	def on_btn_clear_table_2(self):
-		while (self.result_table_2.rowCount() > 0):
-			self.result_table_2.removeRow(0)
 	
 	@pyqtSlot(bool)
 	def on_btn_upload_user_photo(self):
@@ -576,23 +603,24 @@ class MainWindow(QtWidgets.QMainWindow):
 		lineEdit_admin = self.appUI.lineEdit_admin.text()
 		lineEdit_polsovatel = self.appUI.lineEdit_polsovatel.text()
 		label_status = self.appUI.label_status.text()
+
 		if (label_status == ''):
 			msgBox = QMessageBox()
 			msgBox.setIcon(QMessageBox.Information)
 			msgBox.setText("Вы не добавили фото!\nДобавьте обязательно фотографию")
-			msgBox.setWindowTitle("Ошибка")
+			msgBox.setWindowTitle("Внимание")
 			msgBox.setStandardButtons(QMessageBox.Ok)
 			msgBox.exec()
 		elif (lineEdit_id == "" or lineEdit_password == "" or lineEdit_fio == "" or lineEdit_pol  == "" or lineEdit_data == "" or lineEdit_addres == "" or lineEdit_admin == "" or lineEdit_polsovatel == ""): 
 			msgBox = QMessageBox()
 			msgBox.setIcon(QMessageBox.Information)
 			msgBox.setText("Вы не заполнили все строки данными")
-			msgBox.setWindowTitle("Ошибка")
+			msgBox.setWindowTitle("Внимание")
 			msgBox.setStandardButtons(QMessageBox.Ok)
 			msgBox.exec()
 		else:
 			db = ConnectToMySQL()
-			db.UploadData(lineEdit_id, lineEdit_login, lineEdit_password, lineEdit_fio, lineEdit_pol, lineEdit_data, lineEdit_addres, label_status, lineEdit_admin, lineEdit_polsovatel)
+			db.UploadData(lineEdit_id, lineEdit_login, lineEdit_password, lineEdit_fio, lineEdit_pol, lineEdit_data, lineEdit_addres, label_status, str(lineEdit_admin), str(lineEdit_polsovatel))
 
 	@pyqtSlot(bool)
 	def on_btn_get_date_1(self):
@@ -600,7 +628,7 @@ class MainWindow(QtWidgets.QMainWindow):
 			msgBox = QMessageBox()
 			msgBox.setIcon(QMessageBox.Information)
 			msgBox.setText("Вы не вошли в аккаунт")
-			msgBox.setWindowTitle("Ошибка")
+			msgBox.setWindowTitle("Внимание")
 			msgBox.setStandardButtons(QMessageBox.Ok)
 			msgBox.exec()
 		else:
@@ -629,18 +657,20 @@ class MainWindow(QtWidgets.QMainWindow):
 	@pyqtSlot(bool)
 	def on_btn_get_date_2(self):
 		result = ConnectToMySQL().get_all_data_from_db()
+		rules = ConnectToMySQL().rules()
 
 		if result:
 			self.result_table_2.setRowCount(len(result))
 
 			for row, item in enumerate(result):
+				
 				column_1_item = QtWidgets.QTableWidgetItem(str(item['id']))
 				column_2_item = QtWidgets.QTableWidgetItem(str(item['login']))
 				column_3_item = QtWidgets.QTableWidgetItem(str(item['password']))
 				column_4_item = QtWidgets.QTableWidgetItem(str(item['fio']))
 				column_5_item = QtWidgets.QTableWidgetItem(str(item['pol']))
 				column_6_item = QtWidgets.QTableWidgetItem(str(item['birthday']))
-				column_7_item = QtWidgets.QTableWidgetItem(str(item['address']))	
+				column_7_item = QtWidgets.QTableWidgetItem(str(item['address']))
 
 				self.result_table_2.setItem(row, 0, column_1_item)
 				self.result_table_2.setItem(row, 1, column_2_item)
@@ -649,12 +679,18 @@ class MainWindow(QtWidgets.QMainWindow):
 				self.result_table_2.setItem(row, 4, column_5_item)
 				self.result_table_2.setItem(row, 5, column_6_item)
 				self.result_table_2.setItem(row, 6, column_7_item)
+			
+			for row, item in enumerate(rules):
+				column_8_item = QtWidgets.QTableWidgetItem(str(item['is_admin']))
+				column_9_item = QtWidgets.QTableWidgetItem(str(item['is_programm_user']))		
+
+				self.result_table_2.setItem(row, 7, column_8_item)
+				self.result_table_2.setItem(row, 8, column_9_item)
 
 		else:
 			QMessageBox.information(self, 'Warning', 'No date got from database')
 			return
 
-	## Change QPushButton Checkable status when stackedWidget index changed
 	def on_stackedWidget_currentChanged(self, index):
 		btn_list = self.appUI.middle_sidebar_widget.findChildren(QPushButton) \
 					+ self.appUI.full_sidebar_widget.findChildren(QPushButton)
@@ -666,7 +702,6 @@ class MainWindow(QtWidgets.QMainWindow):
 			else:
 				btn.setAutoExclusive(True)
 			
-	## functions for changing menu page
 	def on_btn_home_1_toggled(self):
 		self.appUI.stackedWidget.setCurrentIndex(0)
 	

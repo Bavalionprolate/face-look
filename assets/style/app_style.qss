@@ -1,6 +1,6 @@
 #MainWindow{
     background-color: #fff;
-    min-width: 1200px;
+    min-width: 950px;
 }
 
 #Authorization{

@@ -249,7 +249,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -60, 465, 1000))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 465, 1000))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -555,7 +555,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.addLayout(self.horizontalLayout_8)
         self.tableWidget_2 = QtWidgets.QTableWidget(self.splitter)
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tableWidget_2.setColumnCount(7)
+        self.tableWidget_2.setColumnCount(9)
         self.tableWidget_2.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(0, item)
@@ -571,6 +571,10 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(8, item)
         self.widget_10 = QtWidgets.QWidget(self.splitter)
         self.widget_10.setObjectName("widget_10")
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_10)
@@ -605,7 +609,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1029, 1000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 283, 1000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -786,7 +790,7 @@ class Ui_MainWindow(object):
         self.action_6.setObjectName("action_6")
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_2.setCurrentIndex(0)
         self.btn_menu.toggled['bool'].connect(self.full_sidebar_widget.setHidden) # type: ignore
         self.btn_db_2.toggled['bool'].connect(self.btn_db_1.setChecked) # type: ignore
@@ -860,6 +864,10 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Дата рождения"))
         item = self.tableWidget_2.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "Адресс"))
+        item = self.tableWidget_2.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "Администратор"))
+        item = self.tableWidget_2.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "Пользователь программы"))
         self.btn_clear_table_2.setText(_translate("MainWindow", "Очистить таблицу"))
         self.btn_del.setText(_translate("MainWindow", "Удалить"))
         self.btn_add_upload.setText(_translate("MainWindow", "Приминить изменения"))
@@ -883,7 +891,6 @@ class Ui_MainWindow(object):
         self.action_5.setText(_translate("MainWindow", "Базу данных"))
         self.action_6.setText(_translate("MainWindow", "Устройсва"))
 import assets.resource_rc
-
 
 if __name__ == "__main__":
     import sys
