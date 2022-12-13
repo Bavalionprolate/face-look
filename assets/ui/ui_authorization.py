@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'authorization.ui'
+# Form implementation generated from reading ui file '.\authorization.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -99,7 +99,7 @@ class Ui_Authorization(object):
 
     def retranslateUi(self, Authorization):
         _translate = QtCore.QCoreApplication.translate
-        Authorization.setWindowTitle(_translate("Authorization", "Form"))
+        Authorization.setWindowTitle(_translate("Authorization", "Face-look - Окно авторизации"))
         self.label_2.setText(_translate("Authorization", "Логин"))
         self.label_3.setText(_translate("Authorization", "Пароль"))
         self.pushButton.setText(_translate("Authorization", "Авторизироваться"))

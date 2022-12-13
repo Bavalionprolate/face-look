@@ -1,4 +1,4 @@
-import sys, os, base64, face_recognition, datetime, shutil, re,  mysql.connector, base64
+import sys, os, base64, face_recognition, datetime, shutil, re,  mysql.connector
 from xlsxwriter.workbook import Workbook
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QHeaderView, QAbstractItemView, QDialog, QFileDialog
@@ -275,7 +275,6 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.btn_upload_user_photo = self.appUI.btn_upload_user_photo
 		self.btn_clear_table_1 = self.appUI.btn_clear_table_1
 		self.btn_clear_table_2 = self.appUI.btn_clear_table_2
-		self.btn_add_upload = self.appUI.btn_add_upload
 		self.btn_add_photo = self.appUI.btn_add_photo
 		self.bnt_start_process = self.appUI.pushButton_5
 		self.btn_connect = self.appUI.btn_connect
@@ -485,6 +484,7 @@ class MainWindow(QtWidgets.QMainWindow):
 						os.makedirs("assets/tmp/recognition")
 
 				know_encodings = []
+				
 				images = os.listdir('assets/tmp/recognition')
 			
 				for (j, image) in enumerate(images):

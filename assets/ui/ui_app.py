@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'app.ui'
+# Form implementation generated from reading ui file '.\app.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 16, 16))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.gridLayout_13 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -811,7 +811,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Face-look"))
         self.label.setText(_translate("MainWindow", "Меню"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Из фото"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Из видео камеры"))
